@@ -1,5 +1,5 @@
 
-import {Component, computed, effect, inject, signal} from '@angular/core';
+import {Component, computed, effect, inject, signal, viewChildren} from '@angular/core';
 import {SheepCard} from '../sheep-card/sheep-card';
 import {Observable} from 'rxjs';
 import {Sheep} from '../../models/sheep';
@@ -72,6 +72,8 @@ export class Sheeps {
   snack = inject(MatSnackBar)
   likes = signal(0);
 
+  cards = viewChildren(SheepCard);
+
 
   constructor() {
     effect(() => {
@@ -98,7 +100,7 @@ export class Sheeps {
 
   onLikeChanged(likes: number) {
       if(likes > 0){
-        this.snack.open(`A sheep has been liked ${likes} times`);
+        this.snack.open(`A sheep has been liked ${likes} times with ${this.cards().length} cards`);
       }
   }
 }
