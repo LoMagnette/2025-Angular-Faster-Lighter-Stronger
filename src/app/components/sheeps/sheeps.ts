@@ -1,5 +1,5 @@
 
-import {Component, computed, inject, signal} from '@angular/core';
+import {Component, computed, effect, inject, signal} from '@angular/core';
 import {SheepCard} from '../sheep-card/sheep-card';
 import {Observable} from 'rxjs';
 import {Sheep} from '../../models/sheep';
@@ -13,6 +13,7 @@ import {SheepDialog} from '../sheep-dialog/sheep-dialog';
 import {MatError, MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sheeps',
@@ -49,7 +50,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
     <div class="content">
       <div class="sheep-grid">
         @for (sheep of filteredSheeps(); track sheep.id) {
-          <app-sheep-card [sheep]="sheep"/>
+          <app-sheep-card [sheep]="sheep" (likesChanged)="onLikeChanged($event)"/>
         }
       </div>
     </div>
@@ -68,6 +69,7 @@ export class Sheeps {
   dialog = inject(MatDialog);
   searchText = signal('');
   filteredSheeps = computed<Sheep[]>(() => this.sheeps().filter(s => s.name.toUpperCase().includes(this.searchText().toLocaleUpperCase())))
+  snack = inject(MatSnackBar)
 
 
   refreshSheep() {
@@ -85,5 +87,11 @@ export class Sheeps {
         //TODO
       }
     });
+  }
+
+  onLikeChanged(likes: number) {
+      if(likes > 0){
+        this.snack.open(`A sheep has been liked ${likes} times`);
+      }
   }
 }

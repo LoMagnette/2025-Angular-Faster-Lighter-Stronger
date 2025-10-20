@@ -1,4 +1,4 @@
-import {Component, effect, inject, input, Input, signal} from '@angular/core';
+import {Component, effect, inject, input, Input, output, signal} from '@angular/core';
 import {
   MatCard,
   MatCardActions,
@@ -74,20 +74,18 @@ export class SheepCard {
 
   likes = signal(0);
 
+  likesChanged = output<number>();
+
   snack = inject(MatSnackBar);
 
 
   constructor() {
-    effect(() => {
-      const likeCount = this.likes()
-      if(likeCount > 0){
-        this.snack.open(`${this.sheep().name} has been liked ${likeCount} times`);
-      }
-    });
+
   }
 
   likeSheep() {
     this.likes.update(v => v+1);
+    this.likesChanged.emit(this.likes());
 
   }
 }
