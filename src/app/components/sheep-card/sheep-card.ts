@@ -1,4 +1,4 @@
-import {Component, Input, signal} from '@angular/core';
+import {Component, effect, inject, Input, signal} from '@angular/core';
 import {
   MatCard,
   MatCardActions,
@@ -11,6 +11,7 @@ import {MatButton} from '@angular/material/button';
 import {Sheep} from '../../models/sheep';
 import {MatIcon} from '@angular/material/icon';
 import {NgIf} from '@angular/common';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sheep-card',
@@ -74,6 +75,17 @@ export class SheepCard {
 
   likes = signal(0);
 
+  snack = inject(MatSnackBar);
+
+
+  constructor() {
+    effect(() => {
+      const likeCount = this.likes()
+      if(likeCount > 0){
+        this.snack.open(`${this.sheep.name} has been liked ${likeCount} times`);
+      }
+    });
+  }
 
   likeSheep() {
     this.likes.update(v => v+1);
