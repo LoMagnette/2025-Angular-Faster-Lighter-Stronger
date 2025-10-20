@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Yuri Baagarin",
+    "species": "sheep",
+    "description": "First sheep in space, completing a historic orbit aboard the Baa-stok 1. Known for inspiring countless wool-nauts worldwide.",
+    "imageUrl": "./assets/images/gagarin.webp",
+    "likes": 235,
+    "category": "military"
+  },
+  {
+    "id": 6,
+    "name": "Neil deGraze Tyson",
+    "species": "sheep",
+    "description": "Renowned astro-fleece-icist and science communicator, making cosmic wonders accessible to every ewe under the stars.",
+    "imageUrl": "./assets/images/tyson.png",
+    "likes": 877,
+    "category": "science"
+  },
+  {
+    "id": 3,
+    "name": "Woolliam Shatner",
+    "species": "sheep",
+    "description": "Beloved for his portrayal of Captain James T. Ram on Star Track, he boldly goes where no sheep has gone before—even at 90.",
+    "imageUrl": "./assets/images/shatner-2.webp",
+    "likes": 987,
+    "category": "movie"
+  },
+  {
+    "id": 4,
+    "name": "Buzz Wooldrin",
+    "species": "sheep",
+    "description": "Second sheep on the Moon, Buzz Wooldrin proved that lunar dust can’t dull a determined ewe’s fleece. A true pioneer of the Apoll-ewe era.",
+    "imageUrl": "./assets/images/aldrin.webp",
+    "likes": 89,
+    "category": "military"
+  },
+  {
+    "id": 5,
+    "name": "Neil Lambstrong",
+    "species": "sheep",
+    "description": "First sheep to set hoof on the Moon, uttering the iconic phrase: “That’s one small step for lamb, one giant leap for ewe-manity.”",
+    "imageUrl": "./assets/images/armstrong.webp",
+    "likes": 1200,
+    "category": "military"
+  },
+
+  {
+    "id": 7,
+    "name": "Leonard Ewe-moy",
+    "species": "sheep",
+    "description": "Celebrated for his portrayal of the half-Vulcan, half-ovine “Sp-ock” on Star Track, Leonard Ewe-moy popularized the phrase, “Live long and pro-sheep-er.” A multi-talented artist, he also excelled as a director, poet, and photographer.",
+    "imageUrl": "./assets/images/nimoy.webp",
+    "likes": 654,
+    "category": "movie"
+  },
+  {
+  "id": 2,
+  "name": "Jeff Baa-zos",
+  "species": "sheep",
+  "description": "Ewe-nterprising founder of Am-a-zewe-n and Blue Or-ewe-gin, revolutionizing e-comm-ewe-rce and private spaceflight.",
+  "imageUrl": "./assets/images/bezos.webp",
+  "likes": 1020
+  }
+]
