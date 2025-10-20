@@ -45,15 +45,20 @@ import {NgIf} from '@angular/common';
           </button>
           <div>
             <mat-icon class="icon">
-             @if(sheep.category === 'military'){
-              military_tech
-            } @else if (sheep.category === 'science'){
-              science
-            } @else if (sheep.category === 'movie'){
-              movie
-            }@else{
-              not_listed_location
-            }
+               @switch (sheep.category) {
+                 @case ('military') {
+                    military_tech
+                  }
+                  @case ( 'science') {
+                    science
+                  }
+                  @case ('movie') {
+                    movie
+                  }
+                  @default {
+                    not_listed_location
+                  }
+                }
             </mat-icon>
           </div>
       </mat-card-actions>
