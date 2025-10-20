@@ -1,10 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body {
+html, body {
+  height: 100%;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: linear-gradient(135deg, #0B0D17 0%, #1a1d3a 50%, #2a1e4a 100%);
+  background-attachment: fixed;
   min-height: 100vh;
   color: #e0e0e0;
   position: relative;
@@ -36,6 +41,48 @@ body::before {
 @keyframes twinkle {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 0.8; }
+}
+
+// Custom scrollbar styling
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(11, 13, 23, 0.8);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(138, 180, 248, 0.4) 0%, rgba(107, 148, 216, 0.6) 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(11, 13, 23, 0.8);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(138, 180, 248, 0.6) 0%, rgba(107, 148, 216, 0.8) 100%);
+  box-shadow: 0 0 10px rgba(138, 180, 248, 0.5);
+}
+
+// MatSnackBar styling
+.mdc-snackbar__surface {
+  background: linear-gradient(145deg, rgba(30, 35, 60, 0.98) 0%, rgba(20, 25, 50, 0.98) 100%) !important;
+  border: 1px solid rgba(138, 180, 248, 0.3) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(138, 180, 248, 0.2) !important;
+  backdrop-filter: blur(10px);
+}
+
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: transparent;
+  --mat-snack-bar-button-color: #8ab4f8;
+}
+
+.mdc-snackbar__label {
+  color: #ffffff !important;
+  font-weight: 500;
 }
 
 

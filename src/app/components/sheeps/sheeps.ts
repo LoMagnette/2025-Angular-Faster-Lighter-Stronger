@@ -1,3 +1,4 @@
+
 import {Component, inject} from '@angular/core';
 import {SheepCard} from '../sheep-card/sheep-card';
 import {Observable} from 'rxjs';
@@ -34,10 +35,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         <mat-icon>refresh</mat-icon>
       </button>
     </div>
+    <div class="header">
+      <h1 class="title">Sheep in Space</h1>
+      <p class="subtitle">Discover the legendary astronaut sheep who boldly went where no sheep has gone before</p>
+    </div>
     <div class="search-bar">
       <mat-form-field appearance="outline">
         <mat-label>Filter</mat-label>
-        <input type="text" matInput ="filter" placeholder="Enter the name of the sheep you'r looking for" [(ngModel)]="searchText"/>
+        <input type="text" matInput ="filter" placeholder="Enter the name of the sheep you're looking for" [(ngModel)]="searchText"/>
       </mat-form-field>
     </div>
     <div class="content">
@@ -47,11 +52,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         </ng-container>
       </div>
     </div>
-      <div class="add">
-        <button matFab (click)="addASheep()">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
+      <button mat-fab class="add" (click)="addASheep()">
+        <mat-icon>add</mat-icon>
+      </button>
   `,
   styleUrl: './sheeps.scss'
 })

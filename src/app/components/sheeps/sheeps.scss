@@ -1,3 +1,30 @@
+.header {
+  text-align: center;
+  padding: 40px 20px 20px;
+  margin-top: 60px;
+  animation: slideDown 0.7s ease-out;
+
+  .title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #8ab4f8;
+    margin: 0 0 16px 0;
+    text-shadow: 0 0 20px rgba(138, 180, 248, 0.6);
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    color: #c4c7d7;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
 .content {
   max-width: 1400px;
   margin: 0 auto;
@@ -11,8 +38,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 20px 10px 30px;
-  margin-top: 20px;
+  padding: 20px 10px 40px;
+  margin: 0 auto;
+  animation: slideDown 0.5s ease-out;
 
   .mat-mdc-form-field {
     width: 70%;
@@ -34,7 +62,7 @@
       }
 
       .mat-mdc-form-field-focus-overlay {
-        background: rgba(138, 180, 248, 0.05);
+        background: transparent !important;
       }
 
       .mdc-text-field--focused .mat-mdc-text-field-wrapper {
@@ -46,6 +74,7 @@
         color: #ffffff;
         caret-color: #8ab4f8;
         font-size: 1.05rem;
+        padding: 0 16px;
       }
 
       .mat-mdc-form-field-label,
@@ -92,6 +121,26 @@
   }
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 6px 16px rgba(138, 180, 248, 0.4), 0 0 40px rgba(138, 180, 248, 0.2);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(138, 180, 248, 0.6), 0 0 50px rgba(138, 180, 248, 0.4);
+  }
+}
+
 .tools {
   position: fixed;
   top: 1rem;
@@ -117,11 +166,13 @@
 
   button {
     color: #8ab4f8;
+    border-radius: 50%;
     transition: all 0.3s ease;
 
     &:hover {
       transform: rotate(180deg);
       color: #a8c4f8;
+      background: rgba(138, 180, 248, 0.1);
     }
 
     mat-icon {
@@ -135,38 +186,105 @@
   bottom: 2rem;
   right: 2rem;
   z-index: 100;
+  animation: pulse 3s ease-in-out infinite;
+  background: linear-gradient(135deg, #8ab4f8 0%, #6b94d8 100%) !important;
+  color: white !important;
+  width: 68px !important;
+  height: 68px !important;
+  border-radius: 50% !important;
+  box-shadow:
+    0 6px 16px rgba(138, 180, 248, 0.4),
+    0 0 40px rgba(138, 180, 248, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 3px solid rgba(255, 255, 255, 0.4) !important;
 
-  button {
-    background: linear-gradient(135deg, #8ab4f8 0%, #6b94d8 100%);
-    color: white;
-    width: 64px;
-    height: 64px;
+  mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    transform: scale(1.15) rotate(90deg);
     box-shadow:
-      0 6px 16px rgba(138, 180, 248, 0.4),
-      0 0 40px rgba(138, 180, 248, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+      0 8px 24px rgba(138, 180, 248, 0.6),
+      0 0 50px rgba(138, 180, 248, 0.4) !important;
+    background: linear-gradient(135deg, #a8c4f8 0%, #8ab4f8 100%) !important;
+  }
 
-    mat-icon {
-      font-size: 32px;
-      width: 32px;
-      height: 32px;
-    }
-
-    &:hover {
-      transform: scale(1.15) rotate(90deg);
-      box-shadow:
-        0 8px 24px rgba(138, 180, 248, 0.6),
-        0 0 50px rgba(138, 180, 248, 0.4);
-      background: linear-gradient(135deg, #a8c4f8 0%, #8ab4f8 100%);
-    }
-
-    &:active {
-      transform: scale(1.05) rotate(90deg);
-    }
+  &:active {
+    transform: scale(1.05) rotate(90deg);
   }
 }
 
 .icon {
   float: right;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .header {
+    padding: 30px 15px 15px;
+    margin-top: 50px;
+
+    .title {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      padding: 0 10px;
+    }
+  }
+
+  .search-bar {
+    padding: 15px 10px 30px;
+
+    .mat-mdc-form-field {
+      width: 90%;
+    }
+  }
+
+  .sheep-grid {
+    gap: 1rem;
+  }
+
+  .tools {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 6px 10px;
+  }
+
+  .add {
+    bottom: 1rem;
+    right: 1rem;
+
+    button {
+      width: 56px;
+      height: 56px;
+
+      mat-icon {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    .title {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+    }
+  }
+
+  .example-card {
+    min-width: 280px;
+  }
 }
