@@ -1,4 +1,4 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, resource} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Sheep} from '../models/sheep';
 import {rxResource} from '@angular/core/rxjs-interop';
@@ -15,10 +15,8 @@ export class SheepService {
   }
 
   getSheep() {
-    return rxResource(
-      {
-        defaultValue: [],
-        stream: () => this.http.get<Sheep[]>(`http://localhost:8080/sheeps`)
-      });
+    return resource<Sheep[],unknown>({
+      loader: () => fetch('http://localhost:8080/sheeps').then(res => res.json() || [] )
+    });
   }
 }

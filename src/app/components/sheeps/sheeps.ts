@@ -65,7 +65,7 @@ export class Sheeps {
 
   dialog = inject(MatDialog);
   searchText = signal('');
-  filteredSheeps = linkedSignal<Sheep[]>(() => this.sheeps.value().filter(s => s.name.toUpperCase().includes(this.searchText().toLocaleUpperCase())))
+  filteredSheeps = linkedSignal<Sheep[]>(() => this.sheeps.value()?.filter(s => s.name.toUpperCase().includes(this.searchText().toLocaleUpperCase())) || [])
   snack = inject(MatSnackBar)
   likes = signal(0);
 
