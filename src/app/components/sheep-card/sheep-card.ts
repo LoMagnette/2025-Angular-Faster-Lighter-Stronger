@@ -1,4 +1,4 @@
-import {Component, effect, inject, Input, signal} from '@angular/core';
+import {Component, effect, inject, input, Input, signal} from '@angular/core';
 import {
   MatCard,
   MatCardActions,
@@ -29,12 +29,12 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   template: `
     <mat-card class="example-card" appearance="outlined">
       <mat-card-header>
-        <mat-card-title>{{ sheep.name }}</mat-card-title>
+        <mat-card-title>{{ sheep().name }}</mat-card-title>
       </mat-card-header>
-      <img mat-card-image [src]="sheep.imageUrl">
+      <img mat-card-image [src]="sheep().imageUrl">
       <mat-card-content>
         <p>
-          {{ sheep.description }}
+          {{ sheep().description }}
         </p>
       </mat-card-content>
       <mat-card-actions>
@@ -46,7 +46,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
           </button>
           <div>
             <mat-icon class="icon">
-               @switch (sheep.category) {
+               @switch (sheep().category) {
                  @case ('military') {
                     military_tech
                   }
@@ -70,8 +70,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class SheepCard {
 
-  @Input({required: true})
-  public sheep!: Sheep;
+  public sheep = input.required<Sheep>();
 
   likes = signal(0);
 
@@ -82,7 +81,7 @@ export class SheepCard {
     effect(() => {
       const likeCount = this.likes()
       if(likeCount > 0){
-        this.snack.open(`${this.sheep.name} has been liked ${likeCount} times`);
+        this.snack.open(`${this.sheep().name} has been liked ${likeCount} times`);
       }
     });
   }
