@@ -19,8 +19,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   selector: 'app-sheeps',
   imports: [
     SheepCard,
-    NgForOf,
-    AsyncPipe,
     MatIconButton,
     MatIcon,
     MatTooltip,
@@ -63,12 +61,11 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class Sheeps {
 
   sheepService = inject<SheepService>(SheepService);
-  sheep$: Observable<Sheep[]> = this.sheepService.getSheep();
-  sheeps = toSignal(this.sheep$, {initialValue:[]});
+  sheeps = this.sheepService.getSheep();
 
   dialog = inject(MatDialog);
   searchText = signal('');
-  filteredSheeps = linkedSignal<Sheep[]>(() => this.sheeps().filter(s => s.name.toUpperCase().includes(this.searchText().toLocaleUpperCase())))
+  filteredSheeps = linkedSignal<Sheep[]>(() => this.sheeps.value().filter(s => s.name.toUpperCase().includes(this.searchText().toLocaleUpperCase())))
   snack = inject(MatSnackBar)
   likes = signal(0);
 
@@ -82,7 +79,7 @@ export class Sheeps {
   }
 
   refreshSheep() {
-    this.sheep$ = this.sheepService.getSheep();
+    this.sheeps.reload();
   }
 
   addASheep() {
