@@ -47,9 +47,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     </div>
     <div class="content">
       <div class="sheep-grid">
-        <ng-container *ngFor="let sheep of sheep$ | async">
+        @for (sheep of sheep$ | async; track sheep.id) {
           <app-sheep-card [sheep]="sheep"/>
-        </ng-container>
+        }
       </div>
     </div>
       <button mat-fab class="add" (click)="addASheep()">
