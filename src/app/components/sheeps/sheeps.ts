@@ -50,7 +50,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     <div class="content">
       <div class="sheep-grid">
         @for (sheep of filteredSheeps(); track sheep.id) {
-          <app-sheep-card [sheep]="sheep" (likesChanged)="onLikeChanged($event)"/>
+          <app-sheep-card [sheep]="sheep" [(likes)]="likes"/>
         }
       </div>
     </div>
@@ -70,7 +70,14 @@ export class Sheeps {
   searchText = signal('');
   filteredSheeps = computed<Sheep[]>(() => this.sheeps().filter(s => s.name.toUpperCase().includes(this.searchText().toLocaleUpperCase())))
   snack = inject(MatSnackBar)
+  likes = signal(0);
 
+
+  constructor() {
+    effect(() => {
+      this.onLikeChanged(this.likes())
+    });
+  }
 
   refreshSheep() {
     this.sheep$ = this.sheepService.getSheep();
