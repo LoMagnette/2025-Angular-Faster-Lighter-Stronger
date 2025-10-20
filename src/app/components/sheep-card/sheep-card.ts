@@ -44,26 +44,17 @@ import {NgIf} from '@angular/common';
             LIKE ({{ sheep.likes }})
           </button>
           <div>
-            <ng-container *ngIf="sheep.category === 'military'; else science">
-              <mat-icon class="icon">
-                military_tech
-              </mat-icon>
-            </ng-container>
-            <ng-template #science>
-              <mat-icon *ngIf="sheep.category === 'science'; else movie" class="icon">
-                science
-              </mat-icon>
-            </ng-template>
-            <ng-template #movie>
-              <mat-icon *ngIf="sheep.category === 'movie'; else unknown" class="icon">
-                movie
-              </mat-icon>
-            </ng-template>
-            <ng-template #unknown>
-              <mat-icon class="icon">
-                not_listed_location
-              </mat-icon>
-            </ng-template>
+            <mat-icon class="icon">
+             @if(sheep.category === 'military'){
+              military_tech
+            } @else if (sheep.category === 'science'){
+              science
+            } @else if (sheep.category === 'movie'){
+              movie
+            }@else{
+              not_listed_location
+            }
+            </mat-icon>
           </div>
       </mat-card-actions>
     </mat-card>
