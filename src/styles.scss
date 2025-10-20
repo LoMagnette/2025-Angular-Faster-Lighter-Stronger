@@ -85,6 +85,14 @@ body::before {
   font-weight: 500;
 }
 
+// Mat-error global styling
+mat-error,
+.mat-mdc-form-field-error,
+.mat-error {
+  color: #FF6B9D !important;
+  font-weight: 500;
+}
+
 
 .change-card {
   background: rgba(255, 255, 255, 0.05);

@@ -111,10 +111,12 @@
     }
 
     .mat-mdc-form-field-subscript-wrapper {
-      .mat-mdc-form-field-error {
+      .mat-mdc-form-field-error,
+      mat-error {
         color: #FF6B9D !important;
         font-size: 0.9rem;
         margin-top: 6px;
+        font-weight: 500;
       }
 
       .mat-mdc-form-field-hint {
