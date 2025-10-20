@@ -1,5 +1,5 @@
-import {inject, Injectable, resource} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {inject, Injectable, resource, signal} from '@angular/core';
+import {HttpClient, httpResource} from '@angular/common/http';
 import {Sheep} from '../models/sheep';
 import {rxResource} from '@angular/core/rxjs-interop';
 
@@ -10,13 +10,13 @@ export class SheepService {
 
   private http = inject<HttpClient>(HttpClient)
 
+  searchText = signal('');
+
   constructor() {
 
   }
 
   getSheep() {
-    return resource<Sheep[],unknown>({
-      loader: () => fetch('http://localhost:8080/sheeps').then(res => res.json() || [] )
-    });
+    return httpResource<Sheep[]>( () => `http://localhost:8080/sheeps?name=${this.searchText()}`,{defaultValue:[]});
   }
 }

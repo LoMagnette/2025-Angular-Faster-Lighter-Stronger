@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {Sheep} from '../../models/sheep';
 import {SheepService} from '../../services/sheep-service';
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import {MatFabButton, MatIconButton} from '@angular/material/button';
+import {MatButton, MatFabButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatTooltip} from '@angular/material/tooltip';
 import {MatDialog} from '@angular/material/dialog';
@@ -28,10 +28,12 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     MatLabel,
     ReactiveFormsModule,
     FormsModule,
+    MatButton,
   ],
   template: `
     <div class="tools">
-      <button mat-icon-button (click)="refreshSheep()" matTooltip="Reload sheep">
+      <button mat-button (click)="refreshSheep()" matTooltip="Reload sheep">
+        {{this.sheeps.status()}}
         <mat-icon>refresh</mat-icon>
       </button>
     </div>
@@ -64,8 +66,8 @@ export class Sheeps {
   sheeps = this.sheepService.getSheep();
 
   dialog = inject(MatDialog);
-  searchText = signal('');
-  filteredSheeps = linkedSignal<Sheep[]>(() => this.sheeps.value()?.filter(s => s.name.toUpperCase().includes(this.searchText().toLocaleUpperCase())) || [])
+  searchText = this.sheepService.searchText;
+  filteredSheeps = linkedSignal<Sheep[]>(() => this.sheeps.value().filter(s => s.name.toUpperCase().includes(this.searchText().toLocaleUpperCase())))
   snack = inject(MatSnackBar)
   likes = signal(0);
 
