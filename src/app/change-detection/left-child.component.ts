@@ -1,14 +1,16 @@
 import {Component, inject} from '@angular/core';
 import {GrandChildComponent} from './grand-child.component';
-import {getBackgroundColor} from './util';
+import {getBackgroundColor, getRandomPalette} from './util';
 import {ChangeDetectionService} from './change-detection.service';
 
 @Component({
   selector: 'app-left-child',
   template: `
     <div class="container">
-      <div class="parent change-card" [style.background-color]="color">
-        LEFT
+      <div class="parent change-card" [style.background-color]="palette.bg" [style.color]="palette.color" style="box-shadow:{{palette.glow}}">
+        <p>
+          LEFT
+        </p>
       </div>
       <div class="children">
         <app-grand-child></app-grand-child>
@@ -45,15 +47,14 @@ import {ChangeDetectionService} from './change-detection.service';
   `
 })
 export class LeftChildComponent {
-  color = "white";
+  palette = getRandomPalette();
 
   service = inject(ChangeDetectionService);
 
   constructor() {
-    this.color = getBackgroundColor();
     console.log(getBackgroundColor());
     this.service.count$.subscribe(_ => {
-      this.color = getBackgroundColor();
+      this.palette = getRandomPalette();
     })
   }
 

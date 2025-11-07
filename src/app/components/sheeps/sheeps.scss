@@ -170,7 +170,7 @@
     transition: all 0.3s ease;
 
     &:hover {
-      transform: rotate(180deg);
+      transform: scale(1.2);
       color: #a8c4f8;
       background: rgba(138, 180, 248, 0.1);
     }

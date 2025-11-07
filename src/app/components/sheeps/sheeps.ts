@@ -1,25 +1,20 @@
-
-import {Component, computed, effect, inject, linkedSignal, signal, viewChildren} from '@angular/core';
+import {Component, effect, inject, linkedSignal, signal, viewChildren} from '@angular/core';
 import {SheepCard} from '../sheep-card/sheep-card';
-import {Observable} from 'rxjs';
 import {Sheep} from '../../models/sheep';
 import {SheepService} from '../../services/sheep-service';
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import {MatButton, MatFabButton, MatIconButton} from '@angular/material/button';
+import {MatButton, MatFabButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatTooltip} from '@angular/material/tooltip';
 import {MatDialog} from '@angular/material/dialog';
 import {SheepDialog} from '../sheep-dialog/sheep-dialog';
-import {MatError, MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sheeps',
   imports: [
     SheepCard,
-    MatIconButton,
     MatIcon,
     MatTooltip,
     MatFabButton,

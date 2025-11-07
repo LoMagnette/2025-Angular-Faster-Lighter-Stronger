@@ -1,29 +1,39 @@
 import {Component, inject} from '@angular/core';
 import {ChangeDetectionService} from './change-detection.service';
-import {getBackgroundColor} from './util';
+import {getBackgroundColor, getRandomPalette} from './util';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-grand-child',
   template: `
-    <div class="change-card parent" [style.background-color]="color">
-      <p>Zone: {{count}}</p>
-      <p>No Zone: {{service.count()}}</p>
+    <div class="change-card parent" [style.background-color]="palette.bg" [style.color]="palette.color"
+         style="box-shadow:{{palette.glow}}" style="margin-top:200px">
+      <p>
+        @if (signalMode()) {
+          {{ this.service.count()}}
+        } @else {
+          {{ this.service.count$ | async  }}
+        }
+      </p>
+
     </div>
   `,
+  imports: [
+    AsyncPipe
+  ],
   styles: ``
 })
 export class GrandChildComponent {
 
    service = inject(ChangeDetectionService);
-   count: number = 0;
-   color = "white";
+   palette = getRandomPalette();
+   signalMode = this.service.signalMode;
 
 
   constructor() {
-    this.color= getBackgroundColor();
     this.service.count$.subscribe(next => {
-      this.count = next;
-      this.color= getBackgroundColor();
+      console.log("GrandChildComponent", next);
+      this.palette= getRandomPalette();
     })
   }
 }

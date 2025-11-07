@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, input, signal} from '@angular/core';
 
 @Component({
-  selector: 'app-right-child',
+  selector: 'app-child',
   template: `
     <div class="container">
       <div class="parent change-card">
-        RIGHT
+        <p>{{ name() }}</p>
       </div>
       <div class="children">
         <div class="empty"></div>
@@ -18,6 +18,8 @@ import {Component} from '@angular/core';
   styles: `
   `
 })
-export class RightChildComponent {
+export class ChildComponent {
+
+  name = input('child');
 
 }

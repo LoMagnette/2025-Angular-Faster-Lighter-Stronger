@@ -1,11 +1,10 @@
 import {Component, signal} from '@angular/core';
 import {MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
 import {MatError, MatFormField, MatInput, MatLabel} from '@angular/material/input';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
 import {Sheep} from '../../models/sheep';
-import {form, Field, required, minLength} from '@angular/forms/signals';
-import {JsonPipe} from '@angular/common';
+import {Field, form, minLength, required} from '@angular/forms/signals';
 
 @Component({
   selector: 'app-sheep-dialog',
@@ -20,8 +19,7 @@ import {JsonPipe} from '@angular/common';
     MatButton,
     MatDialogTitle,
     MatError,
-    Field,
-    JsonPipe
+    Field
   ],
   template:`
     <h2 mat-dialog-title>Add a New Space Sheep</h2>

@@ -1,4 +1,4 @@
-import {Component, effect, inject, input, Input, model, output, signal} from '@angular/core';
+import {Component, inject, input, model} from '@angular/core';
 import {
   MatCard,
   MatCardActions,
@@ -10,7 +10,6 @@ import {
 import {MatButton} from '@angular/material/button';
 import {Sheep} from '../../models/sheep';
 import {MatIcon} from '@angular/material/icon';
-import {NgIf} from '@angular/common';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -23,8 +22,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     MatCardContent,
     MatCardActions,
     MatButton,
-    MatIcon,
-    NgIf
+    MatIcon
   ],
   template: `
     <mat-card class="example-card" appearance="outlined">
