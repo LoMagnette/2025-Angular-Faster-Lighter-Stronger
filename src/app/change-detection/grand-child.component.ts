@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {ChangeDetectionService} from './change-detection.service';
-import {getBackgroundColor, getRandomPalette} from './util';
+import {getRandomPalette} from './util';
 import {AsyncPipe} from '@angular/common';
 
 @Component({
